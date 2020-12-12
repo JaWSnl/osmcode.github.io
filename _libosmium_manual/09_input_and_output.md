@@ -272,7 +272,7 @@ Notes:
 ### Writing a File
 
 To create an OSM file, create an instance of the `osmium::io::Writer` class
-and move buffers with OSM objects into its `write()` function:
+and move buffers with OSM objects into its `operator()` function:
 
 ``` c++
 osmium::memory::Buffer buffer;
@@ -280,7 +280,7 @@ osmium::memory::Buffer buffer;
 // an input file using osmium::io::Reader::read().
 osmium::io::File output_file{"output.osm.pbf"};
 osmium::io::Writer writer{output_file};
-writer.write(std::move(buffer));
+writer(std::move(buffer));
 writer.close();
 ```
 
